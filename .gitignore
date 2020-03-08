@@ -2,3 +2,4 @@
 *.swp
 activate.bat
 epyvem/
+__pycache__/

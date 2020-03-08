@@ -25,7 +25,7 @@ class SystemConfig(object):
     """
     def __init__(self):
         self.environment_path = \
-                pathlib.Path("C:\Users\ewright\Documents\environments")
+                pathlib.Path(r"C:\Users\ewright\Documents\environments")
 
 
 def get_system_config():

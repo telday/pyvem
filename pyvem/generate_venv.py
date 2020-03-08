@@ -17,11 +17,11 @@ def create_new_venv(directory: pathlib.Path, config):
     builder.create(directory.resolve())
 
     index = dict()
-    if builder.prompt
-        name = index[builder.prompt]
+    if builder.prompt:
+        name = builder.prompt
     else:
-        name = index[directory.name]
+        name = directory.name
 
     index[name] = {**config.values}
-    index[name]['path'] = {directory}
+    index[name]['path'] = directory.resolve()
     return index

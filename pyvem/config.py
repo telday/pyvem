@@ -1,4 +1,4 @@
-
+import pathlib
 
 class Config(object):
     """Represents the configuration of a virtual Environment"""
@@ -15,3 +15,18 @@ class Config(object):
     @property
     def values(self):
         return self.c
+
+class SystemConfig(object):
+    """Represents the config of the entire manager
+
+    Attributes:
+        environment_path (pathlib.Path): The directory where the environment
+            data is stored
+    """
+    def __init__(self):
+        self.environment_path = \
+                pathlib.Path("C:\Users\ewright\Documents\environments")
+
+
+def get_system_config():
+    return SystemConfig()

@@ -55,3 +55,4 @@ class EnvironmentManager(object):
 
         with open(index_file, 'w') as f:
             f.write(data)
+

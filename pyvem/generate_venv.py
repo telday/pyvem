@@ -1,5 +1,7 @@
+"""Provides functionality for generating the files for a new venv"""
 import venv
 import pathlib
+
 
 def create_new_venv(directory: pathlib.Path, config):
     """
@@ -23,5 +25,5 @@ def create_new_venv(directory: pathlib.Path, config):
         name = directory.name
 
     index[name] = {**config.values}
-    index[name]['path'] = directory.resolve()
+    index[name]["path"] = directory.resolve()
     return index

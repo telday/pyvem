@@ -19,7 +19,7 @@ class EnvironmentManager(object):
             venv_name (str): The name of the env to add
         """
         path = self.config.environment_path / venv_name
-        index_file = self.config.environment_path / '.index'
+        index_file = self.config.environment_path / self.config.index_file_name
         #TODO what happens if an env with that name already exists?
         info = pyvem.generate_venv.create_new_venv(path, pyvem.config.Config())
         if index_file.exists():
@@ -56,3 +56,6 @@ class EnvironmentManager(object):
         with open(index_file, 'w') as f:
             f.write(data)
 
+    def list_environments(self):
+        path = self.config.environment_path
+        index_file = path / self.config.index_file_name

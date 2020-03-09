@@ -24,8 +24,10 @@ class SystemConfig(object):
             data is stored
     """
     def __init__(self):
+        # TODO use environmental variables to determine the environment path
         self.environment_path = \
                 pathlib.Path(r"C:\Users\ewright\Documents\environments")
+        self.index_file_name = '.index'
 
 
 def get_system_config():

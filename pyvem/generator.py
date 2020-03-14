@@ -2,19 +2,31 @@
 import venv
 import pathlib
 
+import pyvem.environment
 
-def create_new_venv(directory: pathlib.Path, config):
-    """
-    Generates the new venv in the given directory with the given config valuies
+def generate_batch_file(environment: pyvem.environment.Environment):
+    """Generates the batch files which correspond to each environment
 
     Args:
-        directory (str): The directory to use
+        directory (Path): The directory to put the batch file in
+        env (Path): The path to the environment directory
+        config: The config of the env to make a batch file for
+    """
+    pass
+
+def generate_environment(environment: pyvem.environment.Environment):
+    """
+    Generates the new venv in the given directory with the given config values
+
+    Args:
+        directory (Path): The directory to use
         config (tmp): The config information
     Returns:
         dict: The representation of the created environment
     Raises:
         Exception: On failure to create environment
     """
+    '''
     builder = venv.EnvBuilder(**config.values)
     builder.create(directory.resolve())
 
@@ -27,3 +39,4 @@ def create_new_venv(directory: pathlib.Path, config):
     index[name] = {**config.values}
     index[name]["path"] = directory.resolve()
     return index
+    '''

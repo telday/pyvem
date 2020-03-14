@@ -3,7 +3,9 @@ VALID_KWARGS = ['system_site_packages', 'clear', 'symlinks', 'upgrade', 'with_pi
 REQUIRED_KWARGS = ['prompt',  'location']
 
 class Environment:
+    """Represents details about an environment, just acts as a setter/getter"""
     def __init__(self, **kwargs):
+        """Gives every kwarg an attribute"""
         for i in REQUIRED_KWARGS:
             if i not in kwargs.keys():
                 raise AttributeError("Environment requires args",

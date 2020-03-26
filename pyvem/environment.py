@@ -13,6 +13,8 @@ class Environment:
 
     def __init__(self, **kwargs):
         """Gives every kwarg an attribute"""
+        self._defined_kwargs = kwargs
+
         for i in self.REQUIRED_KWARGS:
             if i not in kwargs.keys():
                 raise AttributeError("Environment requires args",
@@ -24,3 +26,7 @@ class Environment:
                             "{} is not a valid attribute for Environment"
                         )
             self.__setattr__(i, kwargs[i])
+
+    @property
+    def defined_kwargs(self):
+        return self._defined_kwargs

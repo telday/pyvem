@@ -31,17 +31,8 @@ class SystemConfig(object): #pylint: disable=useless-object-inheritance
         environment_path (pathlib.Path): The directory where the environment
             data is stored
     """
+    DEFAULT_INDEX_FILE_NAME = '.index'
 
     def __init__(self):
         # TODO use environmental variables to determine the environment path
         self.environment_path = pathlib.Path(r"C:\Users\ewright\Documents\environments")
-        self.index_file_name = ".index"
-
-
-def get_system_config():
-    """Gets the main config for the entire program
-
-    Returns:
-        SystemConfig: The config
-    """
-    return SystemConfig()

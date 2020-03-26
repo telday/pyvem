@@ -18,7 +18,7 @@ class TestEnvironment(unittest.TestCase):
 
     def test_constructor(self):
         """Tests the setup of getters and setters for the Environment class"""
-        combos = self.powerset(e.Environment.VALID_KWARGS + e.Environment.REQUIRED_KWARGS)
+        combos = self.powerset(e.Environment.OPTIONAL_KWARGS + e.Environment.REQUIRED_KWARGS)
         for i in range(len(combos)):
             kwargs = dict()
             for j in range(len(combos[i])):

@@ -16,7 +16,7 @@ class Loader:
     def __init__(self, pyvem_home_path):
         self.pyvem_home_path = pathlib.Path(pyvem_home_path)
 
-    def load_index(self, filename=config.SystemConfig.DEFAULT_INDEX_FILE_NAME):
+    def load_index(self, filename=config.DEFAULT_INDEX_FILE_NAME):
         """Loads the index file into memory
         
         Args:
@@ -39,7 +39,7 @@ class Loader:
         return environments
         
 
-    def serialize_environments(self, environments, filename=config.SystemConfig.DEFAULT_INDEX_FILE_NAME):
+    def serialize_environments(self, environments, filename=config.DEFAULT_INDEX_FILE_NAME):
         """Saves the environment data into the index file
         
         Args:

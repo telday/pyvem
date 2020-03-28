@@ -1,5 +1,4 @@
 
-
 class Environment:
     """Represents details about an environment, just acts as a setter/getter
 

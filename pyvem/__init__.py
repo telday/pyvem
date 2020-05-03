@@ -1,8 +1,23 @@
 """Defines tools for working with pyvem environments"""
+import logging
 import os
 import json
 import pathlib
 import pyvem.config
+
+def setup_logger():
+    logger = logging.getLogger(pyvem.config.LOGGER_NAME)
+    logger.setLevel(logging.DEBUG)
+    console = logging.StreamHandler()
+    console.setLevel(logging.DEBUG)
+    formatter = logging.Formatter("%(name)s::%(levelname)s::%(message)s")
+    console.setFormatter(formatter)
+    logger.addHandler(console)
+
+def generate_new_environment():
+    pass
+
+'''
 import pyvem.generate_venv
 
 
@@ -79,3 +94,4 @@ class EnvironmentManager(object): # pylint: disable=useless-object-inheritance
         else:
             return dict()
         return data
+'''

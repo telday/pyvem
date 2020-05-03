@@ -7,8 +7,18 @@ class Environment:
         REQUIRED_KWARGS: A list of required kwargs for the constructor
     """
 
-    OPTIONAL_KWARGS = ['system_site_packages', 'clear', 'symlinks', 'upgrade', 'with_pip','installed_packages', 'python_version']
-    REQUIRED_KWARGS = ['prompt',  'location']
+    OPTIONAL_KWARGS = [
+            'system_site_packages',
+            'clear',
+            'symlinks',
+            'upgrade',
+            'with_pip',
+            'prompt',
+        ]
+    REQUIRED_KWARGS = [
+            'location',
+            'python_version'
+        ]
 
     def __init__(self, **kwargs):
         """Gives every kwarg an attribute"""
@@ -29,3 +39,13 @@ class Environment:
     @property
     def defined_kwargs(self):
         return self._defined_kwargs
+
+    def _asdict(self):
+        return self._defined_kwargs
+
+    def optional_kwargs(self):
+        kwargs = dict()
+        for i in self.OPTIONAL_KWARGS:
+            if i in dir(self):
+                kwargs[i] = self.__getattribute__(i)
+        return kwargs

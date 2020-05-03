@@ -1,8 +1,10 @@
 """Provides functionality for generating the files for a new venv"""
 import venv
 import pathlib
+import sys
 
 import pyvem.environment
+import pyvem.index_manager
 
 def generate_batch_file(environment: pyvem.environment.Environment):
     """Generates the batch files which correspond to each environment
@@ -26,17 +28,17 @@ def generate_environment(environment: pyvem.environment.Environment):
     Raises:
         Exception: On failure to create environment
     """
-    '''
-    builder = venv.EnvBuilder(**config.values)
-    builder.create(directory.resolve())
+    builder = venv.EnvBuilder(**environment.optional_kwargs())
+    builder.create(environment.location)
 
-    index = dict()
-    if builder.prompt:
-        name = builder.prompt
-    else:
-        name = directory.name
+    im = pyvem.index_manager.IndexManager()
+    im.add_environment(environment)
 
-    index[name] = {**config.values}
-    index[name]["path"] = directory.resolve()
-    return index
-    '''
+
+def create_new_environment():
+    if len(sys.argv) < 2:
+        print("Need to specify the environment to create")
+        exit(1)
+    name = sys.argv[1]
+    e = pyvem.environment.Environment(prompt=name, location=f'.\\{name}', python_version=str(sys.version))
+    self.generate_environment(e)

@@ -5,12 +5,14 @@ if %1=="" (
 	goto fail
 )
 
-goto runbatch
+if %PYVEMHOME%=="" (
+	set PYVEMHOME="{default_pyvem_path}"
+)
+
+:runbatch
+%PYVEMHOME%\%1\Scripts\activate.bat
+exit 0
 
 :fail
 echo Specify the environment to activate
 exit 1
-
-:runbatch
-%1
-exit 0

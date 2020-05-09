@@ -6,7 +6,7 @@ import sys
 import pyvem.environment
 import pyvem.index_manager
 
-def generate_batch_file(environment: pyvem.environment.Environment):
+def generate_batch_file(default_path):
     """Generates the batch files which correspond to each environment
 
     Args:
@@ -14,25 +14,25 @@ def generate_batch_file(environment: pyvem.environment.Environment):
         env (Path): The path to the environment directory
         config: The config of the env to make a batch file for
     """
+    
     pass
 
-def generate_environment(environment: pyvem.environment.Environment):
+def generate_environment(path_, environment: pyvem.environment.Environment):
     """
     Generates the new venv in the given directory with the given config values
 
     Args:
-        directory (Path): The directory to use
-        config (tmp): The config information
-    Returns:
-        dict: The representation of the created environment
+        path_ (pathlike): The directory to put the environment in
+        environment(Environment): The environment to create
     Raises:
         Exception: On failure to create environment
     """
     builder = venv.EnvBuilder(**environment.optional_kwargs())
-    builder.create(environment.location)
+    builder.create(path_)
 
     im = pyvem.index_manager.IndexManager()
     im.add_environment(environment)
+
 
 
 def create_new_environment():

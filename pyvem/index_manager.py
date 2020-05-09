@@ -3,9 +3,9 @@ import pathlib
 import json
 
 import pyvem.environment
+import pyvem.config
 
 class IndexManager:
-
     def load_index_file(self):
         filename = self.get_index_file_location()
         try:
@@ -39,5 +39,5 @@ class IndexManager:
             index_file.write(json_data)
 
     def get_index_file_location(self):
-        file_location = pathlib.Path(os.environ['HOME'])
-        return (file_location / 'pyvem' ) / '.index'
+        directory = pathlib.Path(pyvem.config.DEFAULT_PYVEM_HOME)
+        return directory / '.index'

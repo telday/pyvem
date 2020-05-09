@@ -1,17 +1,19 @@
 echo off
 Rem Main entry point for the pyvem application... eventually
 
-if %1=="" (
-	goto fail
-)
+if "%1" == "" goto fail
 
-if %PYVEMHOME%=="" (
-	set PYVEMHOME="{default_pyvem_path}"
-)
+if "%PYVEMHOME%" == "" goto setpyvemhome
+
+:continue
 
 :runbatch
 %PYVEMHOME%\%1\Scripts\activate.bat
 exit 0
+
+:setpyvemhome
+set PYVEMHOME="{default_pyvem_path}"
+goto continue
 
 :fail
 echo Specify the environment to activate

@@ -5,8 +5,16 @@ import sys
 
 import pyvem.environment
 import pyvem.index_manager
+import pyvem.config
 
-def generate_batch_file(default_path):
+from . import __path__
+
+def generate_pyvem_home():
+    home = pathlib.Path(pyvem.config.DEFAULT_PYVEM_HOME)
+    if not home.exists():
+        home.mkdir()
+
+def generate_batch_file(default_path = pyvem.config.DEFAULT_PYVEM_HOME):
     """Generates the batch files which correspond to each environment
 
     Args:
@@ -14,8 +22,15 @@ def generate_batch_file(default_path):
         env (Path): The path to the environment directory
         config: The config of the env to make a batch file for
     """
-    
-    pass
+    default_path = pathlib.Path(default_path)
+    template = pathlib.Path(__path__[0]) / 'bin\\pyvem.bat.template'
+    with open(template, 'r') as template_file:
+        data = template_file.read()
+    data = data.format(default_pyvem_path=default_path)
+    generate_pyvem_home()
+    home = pathlib.Path(pyvem.config.DEFAULT_PYVEM_HOME)
+    with open(default_path / 'pyvem.bat', 'w') as f:
+        f.write(data)
 
 def generate_environment(path_, environment: pyvem.environment.Environment):
     """

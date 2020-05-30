@@ -3,3 +3,4 @@
 activate.bat
 epyvem/
 __pycache__/
+docs/build

@@ -17,7 +17,7 @@ class Environment(venv.EnvBuilder):
             self,
             prompt,
             python_version=None,
-            with_pip=False,
+            with_pip=True,
             upgrade=False,
             symlinks=False,
             clear=False,
@@ -29,7 +29,6 @@ class Environment(venv.EnvBuilder):
         args.pop('__class__')
         self.python_version = args.pop('python_version')
         self.args = args
-        print(args)
         super().__init__(**args)
 
     def _asdict(self):

@@ -20,7 +20,8 @@ class IndexManager:
         data = self.load_index_file()
         environments = list()
         for i in data:
-            env = pyvem.environment.Environment(**data[i])
+            prompt = data[i].pop('prompt')
+            env = pyvem.environment.Environment(prompt, **data[i])
             environments.append(env)
         return environments
 

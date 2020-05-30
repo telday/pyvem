@@ -29,10 +29,12 @@ class Environment(venv.EnvBuilder):
         args.pop('__class__')
         self.python_version = args.pop('python_version')
         self.args = args
+        self.__dict = dict(args)
+        self.__dict['python_version'] = python_version
         super().__init__(**args)
 
     def _asdict(self):
-        return self.args
+        return self.__dict
 
     def create(self):
         path_ = pyvem.config.get_pyvem_home() / self.prompt

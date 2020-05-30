@@ -61,10 +61,6 @@ def add_new_environment(environment: pyvem.environment.Environment):
         generate_batch_file()
     generate_environment(environment)
 
-def create_new_environment():
-    if len(sys.argv) < 2:
-        print("Need to specify the environment to create")
-        exit(1)
-    name = sys.argv[1]
-    e = pyvem.environment.Environment(prompt=name, location=f'.\\{name}', python_version=str(sys.version))
-    self.generate_environment(e)
+def from_prompt(prompt: str):
+    env = pyvem.environment.Environment(prompt)
+    add_new_environment(env)

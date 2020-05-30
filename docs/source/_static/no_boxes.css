@@ -1,0 +1,16 @@
+.rst-content dt.field-odd {
+	margin-bottom:6px;
+	border:none;
+	border-left:none !important;
+	background:#fff !important;
+	color:#000 !important;
+	font-weight:bold !important;
+}
+.rst-content dt.field-even {
+	margin-bottom:6px;
+	border:none;
+	border-left:none !important;
+	background:#fff !important;
+	color:#000 !important;
+	font-weight:bold !important;
+}

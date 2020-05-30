@@ -9,4 +9,8 @@ import logging
 DEFAULT_INDEX_FILE_NAME = '.index'
 LOGGER_NAME = "pyvem_logger"
 
-DEFAULT_PYVEM_HOME = os.environ['HOMEDRIVE'] + os.environ['HOMEPATH'] + '\\.pyvem'
+DEFAULT_PYVEM_HOME = pathlib.Path.home() / '.pyvem'
+
+
+def get_pyvem_home():
+    return DEFAULT_PYVEM_HOME

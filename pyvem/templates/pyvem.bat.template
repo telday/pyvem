@@ -1,5 +1,5 @@
 echo off
-Rem Main entry point for the pyvem application... eventually
+Rem Main entry point for the pyvem application.
 
 if "%1" == "" goto fail
 
@@ -9,12 +9,16 @@ if "%PYVEMHOME%" == "" goto setpyvemhome
 
 :runbatch
 %PYVEMHOME%\%1\Scripts\activate.bat
-exit 0
+set ERRORLEVEL=0
+goto end
 
 :setpyvemhome
-set PYVEMHOME="{default_pyvem_path}"
+set PYVEMHOME={default_pyvem_path}
 goto continue
 
 :fail
 echo Specify the environment to activate
-exit 1
+set ERRORLEVEL=1
+goto end
+
+:end

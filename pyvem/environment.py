@@ -1,51 +1,40 @@
+import venv
+import pyvem.config
 
-class Environment:
+class Environment(venv.EnvBuilder):
     """Represents details about an environment, just acts as a setter/getter
 
     Attributes:
-        OPTIONAL_KWARGS: A list of optional kwargs for the constructor
-        REQUIRED_KWARGS: A list of required kwargs for the constructor
+        prompt
+        python_version
+        with_pip
+        upgrade
+        symlinks
+        clear
+        system_site_packages
     """
-
-    OPTIONAL_KWARGS = [
-            'system_site_packages',
-            'clear',
-            'symlinks',
-            'upgrade',
-            'with_pip',
-            'prompt',
-        ]
-    REQUIRED_KWARGS = [
-            'location',
-            'python_version'
-        ]
-
-    def __init__(self, **kwargs):
+    def __init__(
+            self,
+            prompt,
+            python_version=None,
+            with_pip=False,
+            upgrade=False,
+            symlinks=False,
+            clear=False,
+            system_site_packages=False
+        ):
         """Gives every kwarg an attribute"""
-        self._defined_kwargs = kwargs
-
-        for i in self.REQUIRED_KWARGS:
-            if i not in kwargs.keys():
-                raise AttributeError("Environment requires args",
-                        "{}".format(self.REQUIRED_KWARGS))
-
-        for i in kwargs:
-            if i not in self.OPTIONAL_KWARGS + self.REQUIRED_KWARGS:
-                raise AttributeError(
-                            "{} is not a valid attribute for Environment"
-                        )
-            self.__setattr__(i, kwargs[i])
-
-    @property
-    def defined_kwargs(self):
-        return self._defined_kwargs
+        args = locals()
+        args.pop('self')
+        args.pop('__class__')
+        self.python_version = args.pop('python_version')
+        self.args = args
+        print(args)
+        super().__init__(**args)
 
     def _asdict(self):
-        return self._defined_kwargs
+        return self.args
 
-    def optional_kwargs(self):
-        kwargs = dict()
-        for i in self.OPTIONAL_KWARGS:
-            if i in dir(self):
-                kwargs[i] = self.__getattribute__(i)
-        return kwargs
+    def create(self):
+        path_ = pyvem.config.get_pyvem_home() / self.prompt
+        super().create(path_)

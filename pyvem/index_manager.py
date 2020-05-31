@@ -4,6 +4,8 @@ import json
 
 import pyvem.environment
 import pyvem.config
+from pyvem.exceptions import IndexManagerException
+
 
 class IndexManager:
     def load_index_file(self):
@@ -29,6 +31,19 @@ class IndexManager:
         current_environments = self.get_environments()
         current_environments.append(environment)
         self.save_environments(current_environments)
+
+    def delete_environment(self, prompt):
+        environments = self.get_environments()
+        new_envs = list()
+        found_old_env = False
+        for i in environments:
+            if i.prompt != prompt:
+                new_envs.append(i)
+            else:
+                found_old_env = True
+        if not found_old_env:
+            raise IndexManagerException(f"Unable to find env {prompt}")
+        self.save_environments(new_envs)
         
     def save_environments(self, environments):
         data = dict()

@@ -1,6 +1,14 @@
 pyvem package
 =============
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pyvem.cmd
+
 Submodules
 ----------
 
@@ -16,6 +24,14 @@ pyvem.environment module
 ------------------------
 
 .. automodule:: pyvem.environment
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyvem.exceptions module
+-----------------------
+
+.. automodule:: pyvem.exceptions
    :members:
    :undoc-members:
    :show-inheritance:

@@ -21,12 +21,10 @@ def generate_pyvem_home():
         home.mkdir()
 
 def generate_batch_file(default_path=pyvem.config.DEFAULT_PYVEM_HOME):
-    """Generates the batch files which correspond to each environment
+    """Generates the default pyvem command batch file
 
     Args:
         directory (Path): The directory to put the batch file in
-        env (Path): The path to the environment directory
-        config: The config of the env to make a batch file for
     """
     default_path = pathlib.Path(default_path)
     template = pathlib.Path(__path__[0]) / 'templates\\pyvem.bat.template'

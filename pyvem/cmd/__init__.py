@@ -1,4 +1,5 @@
 import argparse
+import sys
 import shutil
 
 import pyvem.config
@@ -8,13 +9,13 @@ from pyvem.exceptions import EnvironmentException
 
 def run():
     parser = setup_parser()
-    args = parser.parse_args()
+    args = parser.parse_args(args=sys.argv[1:])
     if args.create:
         pyvem.generator.from_prompt(args.create)
     elif args.delete:
         delete_environment(args.delete)
     elif args.list:
-        pyvem.get_environment_name_list()
+        get_environment_name_list()
 
 def setup_parser():
     parser = argparse.ArgumentParser()

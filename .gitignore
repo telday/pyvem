@@ -4,3 +4,7 @@ activate.bat
 epyvem/
 __pycache__/
 docs/build
+dist/
+build/
+test_pyvem/
+*.egg-info/

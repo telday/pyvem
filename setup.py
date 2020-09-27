@@ -1,17 +1,17 @@
-
+import os
+import pathlib
 import setuptools
 
+pyvem_home = pathlib.Path(os.environ['USERPROFILE']) / '.pyvem'
+
 setuptools.setup(
-            name = "an_example_pypi_project",
+            name = "pyvem",
             version = "0.0.4",
             author = "Ellis Wright",
             author_email = "ejw393@gmail.com",
             description = "A python virtual environment manager",
             license = "MIT",
-            packages=['pyvem'],
-            entry_points = {
-                'console_scripts': [
-                    'pyvem = pyvem.cmd:run',
-                ]
-            }
+            packages=setuptools.find_packages('.'),
+            install_requires=['pyyaml'],
+            data_files=[(str(pyvem_home.resolve()), 'pyvem\\bin\\pyvem.bat')]
         )

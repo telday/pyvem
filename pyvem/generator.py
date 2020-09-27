@@ -9,17 +9,6 @@ import pyvem.config
 
 from . import __path__
 
-def pyvem_home_exists():
-    return False
-
-def pyvem_batch_file_exists():
-    return False
-
-def generate_pyvem_home():
-    home = pyvem.config.get_pyvem_home()
-    if not home.exists():
-        home.mkdir()
-
 def generate_batch_file(default_path=pyvem.config.DEFAULT_PYVEM_HOME):
     """Generates the default pyvem command batch file
 
@@ -53,10 +42,6 @@ def generate_environment(environment: pyvem.environment.Environment):
 
 def add_new_environment(environment: pyvem.environment.Environment):
     """Adds a new environment to pyvem for the current user"""
-    if not pyvem_home_exists():
-        generate_pyvem_home()
-    if not pyvem_batch_file_exists():
-        generate_batch_file()
     generate_environment(environment)
 
 def from_prompt(prompt: str):

@@ -13,5 +13,6 @@ setuptools.setup(
             license = "MIT",
             packages=setuptools.find_packages('.'),
             install_requires=['pyyaml'],
-            data_files=[(str(pyvem_home.resolve()), 'pyvem\\bin\\pyvem.bat')]
+            include_package_data=True,
+            data_files=[(str(pyvem_home.resolve()), ['pyvem/bin/pyvem.bat'])]
         )

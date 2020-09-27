@@ -5,8 +5,8 @@ import setuptools
 pyvem_home = pathlib.Path(os.environ['USERPROFILE']) / '.pyvem'
 
 setuptools.setup(
-            name = "pyvem",
-            version = "0.0.4",
+            name = "py-vem",
+            version = "0.1.0",
             author = "Ellis Wright",
             author_email = "ejw393@gmail.com",
             description = "A python virtual environment manager",
